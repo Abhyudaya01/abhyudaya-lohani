@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ExternalLink, Github, Calendar } from 'lucide-react';
+import { ThemeContext } from '../context/ThemeContext';
 
 const Projects = () => {
+  const { isDark } = useContext(ThemeContext);
+
   const projects = [
     {
       title: "Financial Analyst Copilot (AI-Powered RAG System)",
@@ -62,19 +65,19 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="section-padding bg-white">
+    <section id="projects" className={`section-padding ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
       <div className="container-custom">
-        <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
+        <h2 className={`text-4xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Featured Projects</h2>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg shadow-md hover:shadow-xl transition-all p-6 border border-gray-200"
+              className={`${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-gradient-to-br from-gray-50 to-blue-50 border border-gray-200'} rounded-lg shadow-md hover:shadow-xl transition-all p-6`}
             >
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-gray-900 flex-1">{project.title}</h3>
-                <div className="flex items-center gap-1 text-gray-600 text-sm">
+                <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} flex-1`}>{project.title}</h3>
+                <div className={`flex items-center gap-1 ${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
                   <Calendar size={16} />
                   <span>{project.year}</span>
                 </div>
@@ -84,38 +87,38 @@ const Projects = () => {
                 {project.technologies.map((tech, i) => (
                   <span 
                     key={i} 
-                    className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full font-medium"
+                    className={`px-3 py-1 ${isDark ? 'bg-blue-900 text-blue-300 border border-blue-700' : 'bg-blue-100 text-blue-700'} text-sm rounded-full font-medium`}
                   >
                     {tech}
                   </span>
                 ))}
               </div>
               
-              <p className="text-gray-700 mb-4">{project.description}</p>
+              <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} mb-4`}>{project.description}</p>
               
               <div className="mb-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Key Highlights:</h4>
+                <h4 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-2`}>Key Highlights:</h4>
                 <ul className="space-y-1">
                   {project.highlights.map((highlight, i) => (
-                    <li key={i} className="text-gray-700 flex gap-2 text-sm">
-                      <span className="text-blue-600">✓</span>
+                    <li key={i} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} flex gap-2 text-sm`}>
+                      <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>✓</span>
                       <span>{highlight}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               
-              <div className="flex gap-3 pt-4 border-t border-gray-200">
+              <div className={`flex gap-3 pt-4 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
                 <a 
                   href={project.github}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm"
+                  className={`flex items-center gap-2 px-4 py-2 ${isDark ? 'bg-gray-800 hover:bg-gray-700 border border-gray-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-lg transition-colors text-sm`}
                 >
                   <Github size={16} />
                   Code
                 </a>
                 <a 
                   href={project.demo}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                  className={`flex items-center gap-2 px-4 py-2 ${isDark ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg transition-colors text-sm`}
                 >
                   <ExternalLink size={16} />
                   Live Demo

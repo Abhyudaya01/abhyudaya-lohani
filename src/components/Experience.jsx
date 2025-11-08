@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Briefcase, Calendar } from 'lucide-react';
+import { ThemeContext } from '../context/ThemeContext';
 
 const Experience = () => {
+  const { isDark } = useContext(ThemeContext);
+
   const experiences = [
     {
       company: "Deloitte Touche Tohmatsu India LLP",
@@ -38,21 +41,21 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section-padding bg-gray-50">
+    <section id="experience" className={`section-padding ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="container-custom">
-        <h2 className="text-4xl font-bold mb-12 text-center">Experience</h2>
+        <h2 className={`text-4xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Experience</h2>
         
         <div className="max-w-4xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div key={index} className={`${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white'} rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow`}>
               <div className="flex items-start gap-4 mb-4">
-                <div className="p-3 bg-blue-100 rounded-lg">
-                  <Briefcase className="text-blue-600" size={24} />
+                <div className={`p-3 ${isDark ? 'bg-blue-900 border border-blue-700' : 'bg-blue-100'} rounded-lg`}>
+                  <Briefcase className={isDark ? 'text-blue-400' : 'text-blue-600'} size={24} />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900">{exp.role}</h3>
-                  <p className="text-lg text-blue-600 font-semibold">{exp.company}</p>
-                  <div className="flex items-center gap-4 text-gray-600 mt-2">
+                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{exp.role}</h3>
+                  <p className={`text-lg ${isDark ? 'text-blue-400' : 'text-blue-600'} font-semibold`}>{exp.company}</p>
+                  <div className={`flex items-center gap-4 ${isDark ? 'text-gray-400' : 'text-gray-600'} mt-2`}>
                     <div className="flex items-center gap-1">
                       <Calendar size={16} />
                       <span className="text-sm">{exp.period}</span>
@@ -64,8 +67,8 @@ const Experience = () => {
               
               <ul className="space-y-2 ml-16">
                 {exp.achievements.map((achievement, i) => (
-                  <li key={i} className="text-gray-700 flex gap-2">
-                    <span className="text-blue-600 font-bold">•</span>
+                  <li key={i} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} flex gap-2`}>
+                    <span className={`${isDark ? 'text-blue-400' : 'text-blue-600'} font-bold`}>•</span>
                     <span>{achievement}</span>
                   </li>
                 ))}

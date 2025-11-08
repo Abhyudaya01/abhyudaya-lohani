@@ -3,10 +3,9 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Check saved preference
     const saved = localStorage.getItem('darkMode');
     if (saved !== null) {
       setIsDark(JSON.parse(saved));
@@ -14,15 +13,12 @@ export const ThemeProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // Save preference
-    localStorage.setItem('darkMode', JSON.stringify(isDark));
-    
-    // Apply to document
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
+    localStorage.setItem('darkMode', JSON.stringify(isDark));
   }, [isDark]);
 
   const toggleTheme = () => setIsDark(!isDark);
