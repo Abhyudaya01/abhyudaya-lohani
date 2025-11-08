@@ -59,8 +59,8 @@ const Projects = () => {
         "Custom dataset inputs",
         "Interactive visualizations"
       ],
-      github: "#",
-      demo: "#"
+      github: "https://github.com/Abhyudaya01/AlgoSort-Visualizer",
+      demo: "https://sorting-visualizer-one-mu.vercel.app/"
     }
   ];
 
