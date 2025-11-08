@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { ThemeContext } from './context/ThemeContext';
+import Certifications from './components/Certifications';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +46,7 @@ function App() {
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
     { id: 'skills', label: 'Skills' },
+    { id: 'certifications', label: 'Certifications' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -123,6 +125,7 @@ function App() {
         <Experience />
         <Projects />
         <Skills />
+        <Certifications /> 
         <Contact />
       </main>
 

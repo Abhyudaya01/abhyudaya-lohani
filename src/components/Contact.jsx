@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle } from 'lucide-react';
 import { ThemeContext } from '../context/ThemeContext';
-
 
 const Contact = () => {
   const { isDark } = useContext(ThemeContext);
@@ -10,12 +9,33 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState(''); // 'sending', 'success', 'error'
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('sending');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mgvrwvga', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus(''), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus(''), 5000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus(''), 5000);
+    }
   };
 
   const handleChange = (e) => {
@@ -140,11 +160,38 @@ const Contact = () => {
               
               <button
                 type="submit"
-                className={`w-full flex items-center justify-center gap-2 px-6 py-3 ${isDark ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg transition-colors font-semibold`}
+                disabled={status === 'sending'}
+                className={`w-full flex items-center justify-center gap-2 px-6 py-3 ${
+                  status === 'sending' 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : status === 'success'
+                    ? 'bg-green-600 hover:bg-green-700'
+                    : isDark 
+                    ? 'bg-blue-700 hover:bg-blue-600' 
+                    : 'bg-blue-600 hover:bg-blue-700'
+                } text-white rounded-lg transition-colors font-semibold`}
               >
-                <Send size={20} />
-                Send Message
+                {status === 'sending' && 'Sending...'}
+                {status === 'success' && (
+                  <>
+                    <CheckCircle size={20} />
+                    Message Sent!
+                  </>
+                )}
+                {status === 'error' && 'Failed - Try Again'}
+                {!status && (
+                  <>
+                    <Send size={20} />
+                    Send Message
+                  </>
+                )}
               </button>
+
+              {status === 'success' && (
+                <p className="text-green-600 text-center text-sm">
+                  Thank you! I'll get back to you soon.
+                </p>
+              )}
             </form>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Code, Database, Cloud, Wrench, Brain } from 'lucide-react';
 import { ThemeContext } from '../context/ThemeContext';
-
+import AnimatedSection from './AnimatedSection';
 
 const Skills = () => {
   const { isDark } = useContext(ThemeContext);
@@ -72,10 +72,21 @@ const Skills = () => {
     }
   };
 
+  const proficiencyLevels = [
+    { name: "Python & Data Science", level: 95 },
+    { name: "Java & Spring Boot", level: 90 },
+    { name: "React & Frontend Development", level: 88 },
+    { name: "Machine Learning & AI", level: 85 },
+    { name: "Cloud Technologies (AWS/Azure)", level: 82 },
+    { name: "SQL & Database Design", level: 90 }
+  ];
+
   return (
     <section id="skills" className={`section-padding ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="container-custom">
-        <h2 className={`text-4xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Skills & Technologies</h2>
+        <AnimatedSection>
+          <h2 className={`text-4xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Skills & Technologies</h2>
+        </AnimatedSection>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {skillCategories.map((category, index) => {
@@ -83,55 +94,53 @@ const Skills = () => {
             const Icon = category.icon;
             
             return (
-              <div 
-                key={index} 
-                className={`${colors.bg} border ${colors.border} rounded-lg p-6 hover:shadow-lg transition-shadow`}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-2 ${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg ${colors.text}`}>
-                    <Icon size={24} />
+              <AnimatedSection key={index} delay={index * 0.1}>
+                <div 
+                  className={`${colors.bg} border ${colors.border} rounded-lg p-6 hover:shadow-lg transition-shadow h-full`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`p-2 ${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg ${colors.text}`}>
+                      <Icon size={24} />
+                    </div>
+                    <h3 className={`font-bold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>{category.title}</h3>
                   </div>
-                  <h3 className={`font-bold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>{category.title}</h3>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, i) => (
+                      <span 
+                        key={i} 
+                        className={`px-3 py-1 ${colors.tag} rounded-full text-sm font-medium`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, i) => (
-                    <span 
-                      key={i} 
-                      className={`px-3 py-1 ${colors.tag} rounded-full text-sm font-medium`}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </AnimatedSection>
             );
           })}
         </div>
 
         <div className="max-w-4xl mx-auto mt-16">
-          <h3 className={`text-2xl font-bold mb-8 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Technical Proficiency</h3>
+          <AnimatedSection delay={0.6}>
+            <h3 className={`text-2xl font-bold mb-8 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Technical Proficiency</h3>
+          </AnimatedSection>
           <div className="space-y-6">
-            {[
-              { name: "Python & Data Science", level: 95 },
-              { name: "Java & Spring Boot", level: 90 },
-              { name: "React & Frontend Development", level: 88 },
-              { name: "Machine Learning & AI", level: 85 },
-              { name: "Cloud Technologies (AWS/Azure)", level: 82 },
-              { name: "SQL & Database Design", level: 90 }
-            ].map((skill, index) => (
-              <div key={index}>
-                <div className="flex justify-between mb-2">
-                  <span className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{skill.name}</span>
-                  <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>{skill.level}%</span>
+            {proficiencyLevels.map((skill, index) => (
+              <AnimatedSection key={index} delay={0.7 + index * 0.1}>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{skill.name}</span>
+                    <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>{skill.level}%</span>
+                  </div>
+                  <div className={`w-full ${isDark ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-3`}>
+                    <div 
+                      className={`${isDark ? 'bg-gradient-to-r from-blue-600 to-indigo-500' : 'bg-gradient-to-r from-blue-500 to-indigo-600'} h-3 rounded-full transition-all duration-1000`}
+                      style={{ width: `${skill.level}%` }}
+                    ></div>
+                  </div>
                 </div>
-                <div className={`w-full ${isDark ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-3`}>
-                  <div 
-                    className={`${isDark ? 'bg-gradient-to-r from-blue-600 to-indigo-500' : 'bg-gradient-to-r from-blue-500 to-indigo-600'} h-3 rounded-full transition-all duration-1000`}
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
