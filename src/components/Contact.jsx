@@ -67,7 +67,7 @@ const Contact = () => {
 
             <div className="flex gap-4">
               <a 
-                href="https://linkedin.com/in/yourprofile" 
+                href="https://www.linkedin.com/in/abhyudaya-lohani/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -75,7 +75,7 @@ const Contact = () => {
                 <Linkedin size={24} />
               </a>
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/Abhyudaya01" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"

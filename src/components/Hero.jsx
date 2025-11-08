@@ -20,7 +20,7 @@ const Hero = () => {
           
           <div className="flex flex-wrap gap-4 mb-8">
             <a 
-              href="https://github.com/yourusername" 
+              href="https://github.com/Abhyudaya01" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
@@ -29,7 +29,7 @@ const Hero = () => {
               GitHub
             </a>
             <a 
-              href="https://linkedin.com/in/yourprofile" 
+              href="https://www.linkedin.com/in/abhyudaya-lohani/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
