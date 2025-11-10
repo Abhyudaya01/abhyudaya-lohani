@@ -61,7 +61,7 @@ const Projects = () => {
         "Interactive visualizations"
       ],
       github: "https://github.com/Abhyudaya01/AlgoSort-Visualizer",
-      demo: "https://sorting-visualizer-one-mu.vercel.app"
+      demo: "https://sorting-visualizer-xi-gules.vercel.app/"
     }
   ];
 
