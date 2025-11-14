@@ -18,8 +18,8 @@ const Projects = () => {
         "Citation-linked insights",
         "Prompt-safety filters"
       ],
-      github: "https://github.com/Abhyudaya01/Financial-Analyst-Copilot",
-      demo: "https://github.com/Abhyudaya01/Financial-Analyst-Copilot"
+      github: "https://github.com/Abhyudaya01/sec-rag-copilot",
+      demo: "https://github.com/Abhyudaya01/sec-rag-copilot"
     },
     {
       title: "E-Commerce Sales Intelligence Dashboard",
@@ -32,8 +32,8 @@ const Projects = () => {
         "70% reduction in manual reporting",
         "12% improvement in promo ROI"
       ],
-      github: "https://github.com/Abhyudaya01",
-      demo: "https://github.com/Abhyudaya01"
+      github: "https://github.com/Abhyudaya01/ai-report-generator",
+      demo: "https://github.com/Abhyudaya01/ai-report-generator"
     },
     {
       title: "PGLife – Interactive Accommodation Finder",
@@ -46,8 +46,8 @@ const Projects = () => {
         "2,000+ listings",
         "Lighthouse score 95+"
       ],
-      github: "https://github.com/Abhyudaya01/PGLife",
-      demo: "https://github.com/Abhyudaya01/PGLife"
+      github: "https://github.com/Abhyudaya01/PGLife-Interactive-Accommodation-Finder",
+      demo: "https://github.com/Abhyudaya01/PGLife-Interactive-Accommodation-Finder"
     },
     {
       title: "Sorting Visualizer – Algorithm Efficiency Analyzer",
