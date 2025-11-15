@@ -25,8 +25,7 @@ const Hero = () => {
               Data Science Graduate Student & Full-Stack Developer
             </h2>
             <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-6 max-w-2xl`}>
-              Master's student at University of Maryland specializing in Machine Learning, 
-              Data Analytics, and AI-powered solutions. Former Analyst at Deloitte with 
+              Master's student at University of Maryland specializing in Data Science. Former Analyst at Deloitte with 
               expertise in building scalable web applications and data pipelines.
             </p>
 

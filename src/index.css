@@ -441,3 +441,12 @@ textarea:disabled {
   transform: translateZ(0);
   will-change: transform;
 }
+
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 900px;
+}
+
+.tilt-card:hover {
+  transform: perspective(900px) rotateX(2deg) rotateY(-2deg) scale(1.015);
+}
