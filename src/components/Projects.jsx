@@ -19,7 +19,7 @@ const Projects = () => {
         "Prompt-safety filters"
       ],
       github: "https://github.com/Abhyudaya01/sec-rag-copilot",
-      demo: "https://github.com/Abhyudaya01/sec-rag-copilot"
+      demo: "https://www.youtube.com/watch?v=hWO0r-JVg6A&t=19s"
     },
     {
       title: "E-Commerce Sales Intelligence Dashboard",
