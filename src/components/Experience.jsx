@@ -1,23 +1,41 @@
-import React, { useContext } from 'react';
-import { Briefcase, Calendar } from 'lucide-react';
-import { ThemeContext } from '../context/ThemeContext';
-import AnimatedSection from './AnimatedSection';
+import React, { useContext } from "react";
+import { Briefcase, Calendar } from "lucide-react";
+import { ThemeContext } from "../context/ThemeContext";
+import AnimatedSection from "./AnimatedSection";
 
 const Experience = () => {
   const { isDark } = useContext(ThemeContext);
+
+  const cardBase = `
+    rounded-xl p-6 border transition-all duration-200
+    hover:-translate-y-[2px] hover:shadow-md
+  `;
+
+  // TRUE FAANG-STYLE BLACK THEME
+  const cardSurface = isDark
+    ? "bg-[#111] border-[#222]"
+    : "bg-white border-gray-200";
+
+  const textPrimary = isDark ? "text-white" : "text-gray-900";
+  const textSecondary = isDark ? "text-gray-300" : "text-gray-700";
+  const textMuted = isDark ? "text-gray-400" : "text-gray-600";
+
+  const iconBox = isDark
+    ? "bg-[#1a1a1a] border-[#333]"
+    : "bg-white border-gray-200";
 
   const experiences = [
     {
       company: "Deloitte Touche Tohmatsu India LLP",
       location: "Chennai, India",
-      role: "Analyst - Java-based Web Application Development",
-      period: "Sep 2023 - July 2025",
+      role: "Analyst – Java-based Web Application Development",
+      period: "Sep 2023 – July 2025",
       achievements: [
-        "Built a pan-India digital lending platform for a major public sector bank, automating eligibility with Java-based rules and optimizing e-loan document generation in SQL, doubling processing efficiency, cutting loan TAT by 75%, and enabling 60,000 daily disbursements across remote regions while maintaining 99.95% uptime",
-        "Designed user-centric web interfaces in JavaScript and led cross-functional integrations of core banking, LOS/LMS, and KYC systems, boosting engagement and reducing input errors by 80%, improving NPA-screening accuracy by 12%",
-        "Streamlined Java/Spring Boot microservices integrating fintech APIs via typed clients and an in-code API registry, normalizing JSON for downstream services and increasing data reliability by 25% while cutting p95 latency by 20%",
-        "Integrated Java-based business rules with third-party fintech systems, extracting customer values from JSON payload tags for eligibility and risk checks; standardized field mapping, validation, and error handling to improve rule accuracy and reduce decision TAT by 30% with 99.9% uptime",
-        "Provided comprehensive project management support by coordinating with stakeholders for root cause analysis, troubleshooting production issues, and presenting formal status updates to management teams"
+        "Built a pan-India digital lending platform … enabling 60,000+ daily disbursements with 99.95% uptime.",
+        "Designed user-centric interfaces … reducing input errors by 80% and improving NPA-screening accuracy by 12%.",
+        "Optimized Java/Spring Boot microservices … reducing p95 latency by 20%.",
+        "Integrated Java rule engines … reducing decision TAT by 30%.",
+        "Coordinated RCA, production fixes, and stakeholder communication."
       ]
     },
     {
@@ -26,40 +44,62 @@ const Experience = () => {
       role: "Salesforce Developer Intern",
       period: "2023",
       achievements: [
-        "Spearheaded Salesforce Cloud CRM implementation for a major offshore client, resulting in streamlined data management and a 15% increase in lead conversion rates within the first quarter"
+        "Led Salesforce CRM customization and improved lead workflows by 15%."
       ]
     },
     {
       company: "SRM Institute of Science and Technology",
       location: "Chennai, India",
       role: "Undergraduate Researcher",
-      period: "Mar 2022 - Jun 2022",
+      period: "Mar 2022 – Jun 2022",
       achievements: [
-        "Built a hand-gesture recognition system using MediaPipe and OpenCV, optimizing computational performance during a focused research phase",
-        "Presented findings to the academic management team with clear learning objectives and implementation roadmaps"
+        "Built a gesture-recognition system using MediaPipe & OpenCV.",
+        "Presented implementation roadmap to the university board."
       ]
     }
   ];
 
   return (
-    <section id="experience" className={`section-padding ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <section
+      id="experience"
+      className={`section-padding ${isDark ? "bg-black" : "bg-gray-50"}`}
+    >
       <div className="container-custom">
+
         <AnimatedSection>
-          <h2 className={`text-4xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Experience</h2>
+          <h2
+            className={`text-4xl font-bold text-center mb-12 ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
+            Experience
+          </h2>
         </AnimatedSection>
-        
+
         <div className="max-w-4xl mx-auto space-y-8">
-          {experiences.map((exp, index) => (
-            <AnimatedSection key={index} delay={index * 0.2}>
-              <div className={`${isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white'} rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow`}>
+          {experiences.map((exp, idx) => (
+            <AnimatedSection key={idx} delay={idx * 0.15}>
+              <div className={`${cardBase} ${cardSurface}`}>
+
+                {/* Header */}
                 <div className="flex items-start gap-4 mb-4">
-                  <div className={`p-3 ${isDark ? 'bg-blue-900 border border-blue-700' : 'bg-blue-100'} rounded-lg`}>
-                    <Briefcase className={isDark ? 'text-blue-400' : 'text-blue-600'} size={24} />
+
+                  <div className={`p-3 rounded-md border ${iconBox}`}>
+                    <Briefcase
+                      size={22}
+                      className={isDark ? "text-gray-300" : "text-gray-700"}
+                    />
                   </div>
+
                   <div className="flex-1">
-                    <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{exp.role}</h3>
-                    <p className={`text-lg ${isDark ? 'text-blue-400' : 'text-blue-600'} font-semibold`}>{exp.company}</p>
-                    <div className={`flex items-center gap-4 ${isDark ? 'text-gray-400' : 'text-gray-600'} mt-2`}>
+                    <h3 className={`text-xl font-semibold ${textPrimary}`}>
+                      {exp.role}
+                    </h3>
+                    <p className={`text-md font-medium ${textMuted}`}>
+                      {exp.company}
+                    </p>
+
+                    <div className={`flex items-center gap-4 mt-2 ${textMuted}`}>
                       <div className="flex items-center gap-1">
                         <Calendar size={16} />
                         <span className="text-sm">{exp.period}</span>
@@ -68,19 +108,31 @@ const Experience = () => {
                     </div>
                   </div>
                 </div>
-                
-                <ul className="space-y-2 ml-16">
-                  {exp.achievements.map((achievement, i) => (
-                    <li key={i} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} flex gap-2`}>
-                      <span className={`${isDark ? 'text-blue-400' : 'text-blue-600'} font-bold`}>•</span>
-                      <span>{achievement}</span>
+
+                {/* Achievements */}
+                <ul className="space-y-2 ml-1 md:ml-2">
+                  {exp.achievements.map((a, i) => (
+                    <li
+                      key={i}
+                      className={`${textSecondary} flex gap-3 leading-relaxed`}
+                    >
+                      <span
+                        className={`text-sm ${
+                          isDark ? "text-gray-500" : "text-gray-400"
+                        }`}
+                      >
+                        •
+                      </span>
+                      <span>{a}</span>
                     </li>
                   ))}
                 </ul>
+
               </div>
             </AnimatedSection>
           ))}
         </div>
+
       </div>
     </section>
   );

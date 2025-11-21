@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { ExternalLink, Github, Calendar } from 'lucide-react';
-import { ThemeContext } from '../context/ThemeContext';
-import AnimatedSection from './AnimatedSection';
+import React, { useContext } from "react";
+import { Github, ExternalLink, Calendar } from "lucide-react";
+import { ThemeContext } from "../context/ThemeContext";
+import AnimatedSection from "./AnimatedSection";
 
 const Projects = () => {
   const { isDark } = useContext(ThemeContext);
@@ -11,124 +11,156 @@ const Projects = () => {
       title: "Financial Analyst Copilot (AI-Powered RAG System)",
       year: "2025",
       technologies: ["LangChain", "FAISS", "GPT", "RAG", "LLMs"],
-      description: "Built an SEC-analysis RAG copilot (10-K/10-Q, earnings transcripts) using LangChain + FAISS and GPT-4o turbo, delivering citation-linked insights with retrieval/faithfulness evals and prompt-safety filters, reducing research time by 40% and keeping p95 latency ≤ 2.0s",
+      description:
+        "Built an SEC-analysis copilot (10-K/10-Q, earnings transcripts) using LangChain + FAISS with GPT-4o Turbo. Added citation-linked answers, prompt-safety filters, and retrieval/faithfulness evaluation—reducing research time by 40% while keeping p95 latency ≤ 2.0s.",
       highlights: [
-        "40% reduction in research time",
+        "40% research time reduction",
         "p95 latency ≤ 2.0s",
-        "Citation-linked insights",
-        "Prompt-safety filters"
+        "Citation-linked answers",
+        "Safety & evaluation filters",
       ],
       github: "https://github.com/Abhyudaya01/sec-rag-copilot",
-      demo: "https://www.youtube.com/watch?v=hWO0r-JVg6A&t=19s"
+      demo: "https://www.youtube.com/watch?v=hWO0r-JVg6A&t=19s",
     },
     {
       title: "E-Commerce Sales Intelligence Dashboard",
       year: "2025",
       technologies: ["Python", "SQL", "Pandas", "ETL", "Tableau", "Plotly"],
-      description: "Developed a BI dashboard with Python/SQL ETL into a star schema across 8 sources and 30+ KPIs (AOV, CAC, LTV), refreshed hourly in Tableau/Plotly, cutting manual reporting by 70% and improving promo ROI by 12%",
-      highlights: [
-        "8 data sources integrated",
-        "30+ KPIs tracked",
-        "70% reduction in manual reporting",
-        "12% improvement in promo ROI"
-      ],
+      description:
+        "Designed a BI analytics pipeline with Python/SQL ETL across 8 sources and 30+ KPIs (AOV, CAC, LTV). Automated hourly refresh, optimized schema to star design, and reduced manual reporting by 70% while improving promo ROI by 12%.",
+      highlights: ["30+ KPIs", "8 integrated sources", "70% faster reporting", "12% ROI improvement"],
       github: "https://github.com/Abhyudaya01/ai-report-generator",
-      demo: "https://github.com/Abhyudaya01/ai-report-generator"
+      demo: "https://github.com/Abhyudaya01/ai-report-generator",
     },
     {
       title: "PGLife – Interactive Accommodation Finder",
       year: "2023",
       technologies: ["React.js", "JavaScript", "Bootstrap", "REST APIs"],
-      description: "Developed a React.js web app with REST APIs, JWT auth, map search, and filters; achieved p95 LCP < 2.5s, reduced bounce rate by 18%, and onboarded 2,000+ listings with Lighthouse score 95+",
-      highlights: [
-        "p95 LCP < 2.5s",
-        "18% bounce rate reduction",
-        "2,000+ listings",
-        "Lighthouse score 95+"
-      ],
-      github: "https://github.com/Abhyudaya01/PGLife-Interactive-Accommodation-Finder",
-      demo: "https://github.com/Abhyudaya01/PGLife-Interactive-Accommodation-Finder"
+      description:
+        "Built a React web app with JWTAuth, filters, and interactive map search. Achieved p95 LCP < 2.5s, reduced bounce rate by 18%, onboarded 2,000+ listings, and hit a 95+ Lighthouse performance score.",
+      highlights: ["p95 LCP < 2.5s", "18% bounce rate reduction", "2,000+ listings", "Lighthouse 95+"],
+      github:
+        "https://github.com/Abhyudaya01/PGLife-Interactive-Accommodation-Finder",
+      demo:
+        "https://github.com/Abhyudaya01/PGLife-Interactive-Accommodation-Finder",
     },
     {
       title: "Sorting Visualizer – Algorithm Efficiency Analyzer",
       year: "2023",
       technologies: ["JavaScript", "React.js", "Data Visualization"],
-      description: "Optimized interactive sorting visualizer, decreasing initial load time by 55% through efficient data handling, resulting in a smoother user experience, and supporting custom dataset inputs",
-      highlights: [
-        "55% faster load time",
-        "Multiple algorithms supported",
-        "Custom dataset inputs",
-        "Interactive visualizations"
-      ],
+      description:
+        "Optimized a visual algorithm explorer, improving initial load time by 55% with efficient dataset handling while supporting multiple algorithms, interactive steps, and custom datasets.",
+      highlights: ["55% faster load time", "Multiple algorithms", "Custom dataset input", "Interactive UI"],
       github: "https://github.com/Abhyudaya01/AlgoSort-Visualizer",
-      demo: "https://sorting-visualizer-xi-gules.vercel.app/"
-    }
+      demo: "https://sorting-visualizer-xi-gules.vercel.app/",
+    },
   ];
 
   return (
-    <section id="projects" className={`section-padding ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+    <section
+      id="projects"
+      className={`section-padding ${
+        isDark ? "bg-[#0d0d0f]" : "bg-white"
+      }`}
+    >
       <div className="container-custom">
         <AnimatedSection>
-          <h2 className={`text-4xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Featured Projects</h2>
+          <h2
+            className={`text-4xl font-bold mb-14 text-center tracking-tight ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+          >
+            Featured Projects
+          </h2>
         </AnimatedSection>
-        
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
-            <AnimatedSection key={index} delay={index * 0.1}>
-              <div 
-                className={`${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-gradient-to-br from-gray-50 to-blue-50 border border-gray-200'} rounded-lg shadow-md hover:shadow-xl transition-all p-6 h-full flex flex-col`}
+
+        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          {projects.map((project, idx) => (
+            <AnimatedSection delay={idx * 0.1} key={idx}>
+              <div
+                className={`
+                  border rounded-xl p-8 h-full transition-all duration-200
+                  ${isDark ? "border-gray-700 hover:border-gray-500" : "border-gray-200 hover:border-gray-400"}
+                  hover:-translate-y-1
+                `}
               >
+                {/* Title Row */}
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} flex-1`}>{project.title}</h3>
-                  <div className={`flex items-center gap-1 ${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm`}>
-                    <Calendar size={16} />
-                    <span>{project.year}</span>
-                  </div>
+                  <h3
+                    className={`text-xl font-semibold tracking-tight ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    {project.title}
+                  </h3>
+                  <span
+                    className={`flex items-center gap-1 text-sm ${
+                      isDark ? "text-gray-400" : "text-gray-500"
+                    }`}
+                  >
+                    <Calendar size={14} /> {project.year}
+                  </span>
                 </div>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
+
+                {/* Description */}
+                <p
+                  className={`text-sm leading-relaxed mb-4 ${
+                    isDark ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  {project.description}
+                </p>
+
+                {/* Tech Chips */}
+                <div className="flex flex-wrap gap-2 mb-5">
                   {project.technologies.map((tech, i) => (
-                    <span 
-                      key={i} 
-                      className={`px-3 py-1 ${isDark ? 'bg-blue-900 text-blue-300 border border-blue-700' : 'bg-blue-100 text-blue-700'} text-sm rounded-full font-medium`}
+                    <span
+                      key={i}
+                      className={`px-3 py-1 text-xs rounded-full border ${
+                        isDark
+                          ? "border-gray-700 text-gray-300"
+                          : "border-gray-300 text-gray-700"
+                      }`}
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-                
-                <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} mb-4 flex-grow`}>{project.description}</p>
-                
-                <div className="mb-4">
-                  <h4 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-2`}>Key Highlights:</h4>
-                  <ul className="space-y-1">
-                    {project.highlights.map((highlight, i) => (
-                      <li key={i} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} flex gap-2 text-sm`}>
-                        <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>✓</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className={`flex gap-3 pt-4 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'} mt-auto`}>
-                  <a 
+
+                {/* Highlights */}
+                <ul className="space-y-1 mb-6">
+                  {project.highlights.map((h, i) => (
+                    <li
+                      key={i}
+                      className={`flex items-center gap-2 text-sm ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
+                      <span className="text-blue-500">•</span> {h}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Links */}
+                <div className="flex gap-4 pt-4 border-t 
+                  ${isDark ? 'border-gray-700' : 'border-gray-200'}"
+                >
+                  <a
                     href={project.github}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 ${isDark ? 'bg-gray-800 hover:bg-gray-700 border border-gray-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-lg transition-colors text-sm`}
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-sm hover:opacity-70 transition"
                   >
-                    <Github size={16} />
-                    Code
+                    <Github size={16} /> Code
                   </a>
-                  <a 
+
+                  <a
                     href={project.demo}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 ${isDark ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg transition-colors text-sm`}
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-sm hover:opacity-70 transition"
                   >
-                    <ExternalLink size={16} />
-                    Live Demo
+                    <ExternalLink size={16} /> Demo
                   </a>
                 </div>
               </div>
